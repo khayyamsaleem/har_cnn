@@ -33,17 +33,13 @@ def plot_activity(activity, data):
     plt.subplots_adjust(top=0.90)
     plt.show()
 
-dataset = read_data('actitracker_raw.txt')
-print("good")
+dataset = read_data('actitracker_modified2.txt')
+print(dataset['x-axis'])
 dataset['x-axis'] = feature_normalize(dataset['x-axis'])
-print("good")
 dataset['y-axis'] = feature_normalize(dataset['y-axis'])
-print("good")
 dataset['z-axis'] = feature_normalize(dataset['z-axis'])
-print("good")
 
 for activity in np.unique(dataset["activity"]):
-    print("working")
     subset = dataset[dataset["activity"] == activity][:180]
     plot_activity(activity, subset)
 
